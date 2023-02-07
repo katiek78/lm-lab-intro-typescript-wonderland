@@ -32,7 +32,6 @@ function failImmediately() {
 
 const numberBiggerThanThree: number = 11;
 
-// 👉 FIXME ❌
 function checkEntryCodeIsBiggerThanThree(code: number) {
 	return code > 3;
 }
