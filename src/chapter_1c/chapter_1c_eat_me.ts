@@ -23,7 +23,10 @@ const cakes: Array<Cake> = [
   { cakeType: "vanilla sponge", slicesRemaining: 8, potency: 5 },
 ];
 
-const currentValues: {height: number, cakeIndex: number} = {height: 1, cakeIndex: -1};
+const currentValues: { height: number; cakeIndex: number } = {
+  height: 1,
+  cakeIndex: -1,
+};
 
 export function eatMe(): void {
   clear(true);
@@ -37,11 +40,15 @@ export function eatMe(): void {
 function displayCakes(): void {
   cakes.forEach((c, i) =>
     print(
-      `   ${i} - This cake is ${c.cakeType} and there ${c.slicesRemaining === 1 ? 'is' : 'are'} ${c.slicesRemaining} slice${c.slicesRemaining === 1 ? '' : 's'} left`
+      `   ${i} - This cake is ${c.cakeType} and there ${
+        c.slicesRemaining === 1 ? "is" : "are"
+      } ${c.slicesRemaining} slice${c.slicesRemaining === 1 ? "" : "s"} left`
     )
   );
   print(
-    `Your current height is ${currentValues.height.toFixed(2).toString()} and you need to be at least 4 foot high to reach the key.`
+    `Your current height is ${currentValues.height
+      .toFixed(2)
+      .toString()} and you need to be at least 4 foot high to reach the key.`
   );
   askQuestion("Which number cake will you choose?", chooseCake);
 }
@@ -63,22 +70,27 @@ function chooseNumberOfSlices(input: string): void {
 
 function eatCake(cakeIndex: number, numberOfSlices: number): void {
   const thisCake = cakes[currentValues.cakeIndex];
-  const slicesToBeEaten = numberOfSlices <= thisCake.slicesRemaining ? numberOfSlices : thisCake.slicesRemaining;
-  
+  const slicesToBeEaten =
+    numberOfSlices <= thisCake.slicesRemaining
+      ? numberOfSlices
+      : thisCake.slicesRemaining;
+
   if (slicesToBeEaten === 0) {
     print("OH NO! 😑");
     print("No slices left!");
     return displayCakes();
   }
   print(
-    `You eat ${slicesToBeEaten.toString()} slice${thisCake.slicesRemaining === 1 ? '' : 's'} of the ${
-      thisCake.cakeType
-    } cake. It's delicious!`
+    `You eat ${slicesToBeEaten.toString()} slice${
+      thisCake.slicesRemaining === 1 ? "" : "s"
+    } of the ${thisCake.cakeType} cake. It's delicious!`
   );
 
   //update height
   currentValues.height += (thisCake.potency / 12) * numberOfSlices;
-  print(`Your height is now ${currentValues.height.toFixed(2).toString()} foot.`);
+  print(
+    `Your height is now ${currentValues.height.toFixed(2).toString()} foot.`
+  );
 
   //update slicesRemaining
   thisCake.slicesRemaining -= slicesToBeEaten;
