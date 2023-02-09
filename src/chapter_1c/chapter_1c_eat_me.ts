@@ -40,7 +40,7 @@ export function eatMe(): void {
 function displayCakes(): void {
   cakes.forEach((c, i) =>
     print(
-      `   ${i} - This cake is ${c.cakeType} and there ${
+      `   ${i} - This is a ${c.cakeType} cake with a potency of ${c.potency} and there ${
         c.slicesRemaining === 1 ? "is" : "are"
       } ${c.slicesRemaining} slice${c.slicesRemaining === 1 ? "" : "s"} left`
     )
@@ -48,7 +48,7 @@ function displayCakes(): void {
   print(
     `Your current height is ${currentValues.height
       .toFixed(2)
-      .toString()} and you need to be at least 4 foot high to reach the key.`
+      .toString()} foot and you need to be at least 4 foot high to reach the key.`
   );
   askQuestion("Which number cake will you choose?", chooseCake);
 }
