@@ -1,6 +1,6 @@
 import { endAdventure } from "../..";
 import { askQuestion, clear, print } from "../ui/console";
-import { meetTheCheshireCat } from "../chapter_2/chapter_2_cheshire_cat";
+import { eatMe } from "../chapter_1c/chapter_1c_eat_me";
 import { parseDrinkInput } from "../ui/parse_input";
 
 export const BOTTLED_DRINKS = [
@@ -10,8 +10,8 @@ export const BOTTLED_DRINKS = [
   "milk",
   "Diet Coke",
 ] as const;
-export type Bottled_Drink = typeof BOTTLED_DRINKS[number];
-type Bottle = { drink: Bottled_Drink; label: string };
+export type BottledDrink = typeof BOTTLED_DRINKS[number];
+type Bottle = { drink: BottledDrink; label: string };
 const bottles: Array<Bottle> = [
   { drink: "tequila", label: "Drink me now!" },
   { drink: "original Lucozade", label: "Drink me" },
@@ -31,7 +31,7 @@ export function drinkMe(): void {
   askQuestion("Which number bottle will you choose?", chooseDrink);
 }
 
-function chooseDrink(input: string) {
+function chooseDrink(input: string): void {
   const drink = parseDrinkInput(input);
 
   if (drink === undefined) {
@@ -43,11 +43,13 @@ function chooseDrink(input: string) {
   return drinkDrink(drink);
 }
 
-export function drinkDrink(drink: Bottled_Drink): void {
+export function drinkDrink(drink: BottledDrink): void {
   if (drink === "original Lucozade") {
-    print("You drink the contents of the bottle and suddenly you shrink to ten inches high!");
+    print(
+      "You drink the contents of the bottle and suddenly you shrink to twelve inches high!"
+    );
     print("Now you can fit through the door...");
-    return askQuestion("Press ENTER to continue! ", meetTheCheshireCat);
+    return askQuestion("Press ENTER to continue! ", eatMe);
   } else {
     print(`UH-OH! 🤯`);
     print(`You are too big for the door!`);

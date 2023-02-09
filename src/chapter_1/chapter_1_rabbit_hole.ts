@@ -1,5 +1,5 @@
 import { endAdventure } from "../..";
-import { meetTheCheshireCat } from "../chapter_2/chapter_2_cheshire_cat";
+import { drinkMe } from "../chapter_1b/chapter_1b_drink_me";
 import { clear, print, askQuestion } from "../ui/console";
 import { parseHoleInput } from "../ui/parse_input";
 import { Hole, HOLES } from "./chapter_1.types";
@@ -38,7 +38,7 @@ export function enterHole(hole: Hole): void {
   clear(true);
 
   if (hole === "Rabbit") {
-    return meetTheCheshireCat();
+    return drinkMe();
   } else {
     print(`WHAAAAT ❓🤯😅❓`);
     print(`You can't find adventures there!`);
